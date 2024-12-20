@@ -1,0 +1,3 @@
+flask
+google_images_download
+email_validator

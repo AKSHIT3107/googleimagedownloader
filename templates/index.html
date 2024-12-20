@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Image Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1em;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-top: 1em;
+            color: #555;
+            font-weight: bold;
+            text-align: left;
+        }
+        input[type="number"],
+        input[type="email"],
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            margin-top: 1.5em;
+            padding: 0.5em 1em;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #c9302c;
+            transform: scale(1.05);
+        }
+        .message {
+            margin-top: 1em;
+            color: #d9534f;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Google Image Downloader</h1>
+        <form action="/download" method="post">
+            <label for="image_count">Number of Images:</label>
+            <input type="number" name="image_count" id="image_count" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="attribute">Image Attribute (e.g., cat, dog):</label>
+            <input type="text" name="attribute" id="attribute" required>
+
+            <button type="submit">Download and Send</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
